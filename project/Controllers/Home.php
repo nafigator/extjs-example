@@ -15,6 +15,9 @@
 
 namespace Controllers;
 
+use Models\Banners;
+use Models\Campaigns;
+
 /**
  * Class   Home
  *
@@ -29,6 +32,9 @@ class Home
 	 */
 	public function index()
 	{
+		$banners   = (new Banners)->read();
+		$campaigns = (new Campaigns)->read();
+
 		return [];
 	}
 }
