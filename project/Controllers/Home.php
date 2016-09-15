@@ -22,6 +22,11 @@ namespace Controllers;
  */
 class Home
 {
+	/**
+	 * Экшен главной страницы
+	 *
+	 * @return array
+	 */
 	public function index()
 	{
 		return [];
