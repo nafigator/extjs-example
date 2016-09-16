@@ -37,7 +37,7 @@ Ext.define('Artics.view.main.Main', {
             },
             flex: 0
         },
-        iconCls: 'fa-th-list'
+        iconCls: 'fa-bar-chart'
     },
 
     tabBar: {
