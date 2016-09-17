@@ -18,7 +18,11 @@ Ext.define('Artics.view.main.List', {
         { text: 'Banner title', dataIndex: 'title', flex: 1 },
         { text: 'Shows', dataIndex: 'shows' },
         { text: 'Clicks', dataIndex: 'clicks' },
-        { text: 'Costs', dataIndex: 'costs'},
+        {
+            text: 'Costs',
+            dataIndex: 'costs',
+            renderer: Ext.util.Format.numberRenderer('0.00')
+        },
         { text: 'Campaign name', dataIndex: 'campaign_name', flex: 1 },
         { text: 'Sex', dataIndex: 'sex' },
         { text: 'Age from', dataIndex: 'age_from' },
