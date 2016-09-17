@@ -3,10 +3,6 @@ Ext.define('Artics.store.Banners', {
 
     alias: 'store.banners',
 
-    required: [
-        'Ext.Store.data.proxy.Rest'
-    ],
-
     autoLoad: true,
     loadMask: true,
 

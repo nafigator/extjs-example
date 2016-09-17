@@ -7,7 +7,6 @@ $include-artics-store-banners: dynamic(true);;
 $include-artics-view-main-list: dynamic(true);;
 $include-artics-view-main-main: dynamic(true);;
 $include-artics-view-main-maincontroller: dynamic(true);;
-$include-artics-view-main-mainmodel: dynamic(true);;
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
 $include-ext-abstractmanager: dynamic(true);;
