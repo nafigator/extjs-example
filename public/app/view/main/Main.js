@@ -78,6 +78,9 @@ Ext.define('Artics.view.main.Main', {
     items: [{
         title: 'Banners',
         iconCls: 'fa-dashboard',
+
+        layout: 'fit',
+        scrollable: true,
         // The following grid shares a store with the classic version's grid as well!
         items: [{
             xtype: 'mainlist'

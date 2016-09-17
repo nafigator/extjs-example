@@ -25,13 +25,6 @@ Ext.define('Artics.view.main.List', {
         select: 'onItemSelected'
     },
 
-    tbar: {
-        xtype: 'pagingtoolbar',
-        displayInfo: true,
-        emptyMsg: 'No data to display',
-        items: ['->'],
-        prependButtons: true
-    },
     bbar: {
         xtype: 'pagingtoolbar',
         displayInfo: true,

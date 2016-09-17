@@ -30,7 +30,7 @@ class Banners
 	protected $delimiter = ';';
 	protected $name      = 'banners.csv';
 	protected $start     = 0;
-	protected $limit     = 25;
+	protected $limit     = 50;
 
 	/**
 	 * Инициализация пути и имени файла
