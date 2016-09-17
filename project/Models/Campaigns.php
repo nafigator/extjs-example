@@ -26,15 +26,7 @@ class Campaigns extends Banners
 {
 	protected $name = 'campaigns.csv';
 	/** @var array Функции применяемые к значениям, взятым из csv */
-	protected $types = [
-		0 => 'int',
-		1 => 'string',
-		2 => 'string',
-		3 => 'int',
-		4 => 'int',
-		5 => 'int',
-		6 => 'string'
-	];
+	protected $types = ['int', 'string', 'string', 'int', 'int', 'int', 'string'];
 
 	/**
 	 * Читаем полностью файл с кампаниями

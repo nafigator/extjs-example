@@ -1,5 +1,7 @@
 <?php
 /**
+ * Исключение для 501 ошибок
+ *
  * @file      NotImplementedException.php
  *
  * PHP version 5.4+

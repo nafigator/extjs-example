@@ -1,5 +1,7 @@
 <?php
 /**
+ * Исключения для 500 ошибок
+ *
  * @file      RuntimeException.php
  *
  * PHP version 5.4+

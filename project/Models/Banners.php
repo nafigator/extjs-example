@@ -32,14 +32,7 @@ class Banners
 	protected $start     = 0;
 	protected $offset    = 25;
 	/** @var array Функции применяемые к значениям, взятым из csv */
-	protected $types = [
-		0 => 'int',
-		1 => 'int',
-		2 => 'string',
-		3 => 'int',
-		4 => 'int',
-		5 => 'float'
-	];
+	protected $types = ['int', 'int', 'string', 'int', 'int', 'float'];
 
 	/**
 	 * Инициализация пути и имени файла
@@ -91,6 +84,8 @@ class Banners
 	}
 
 	/**
+	 * Установка номера начальной строки для чтения
+	 *
 	 * @param int $start
 	 *
 	 * @return Banners
@@ -105,6 +100,8 @@ class Banners
 	}
 
 	/**
+	 * Установка кол-ва строк для чтения
+	 *
 	 * @param int $offset
 	 *
 	 * @return Banners

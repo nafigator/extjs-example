@@ -33,14 +33,7 @@ class DataBuilder
 	protected $campaigns_ids;
 	/** @var  int Общий ключ в массивах баннеров и кампаний */
 	protected $intersect_key = 0;
-	protected $empty_campaign = [
-		0 => '',
-		1 => '',
-		2 => 0,
-		3 => 0,
-		4 => 0,
-		5 => ''
-	];
+	protected $empty_campaign = ['', '', 0, 0, 0, ''];
 
 	/**
 	 * Передаём модели баннеров и кампаний
