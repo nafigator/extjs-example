@@ -22,7 +22,7 @@ use Veles\View\View;
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class NotFoundException extends \DomainException
+class NotFoundException extends HttpResponseException
 {
 	protected $uri;
 	protected $user_agent;
@@ -36,6 +36,7 @@ class NotFoundException extends \DomainException
 		$this->user_agent = isset($_SERVER['HTTP_USER_AGENT'])
 			? $_SERVER['HTTP_USER_AGENT']
 			: 'WARNING! HTTP_USER_AGENT NOT DEFINED!';
+
 		$this->remote_ip  = isset($_SERVER['REMOTE_ADDR'])
 			? $_SERVER['REMOTE_ADDR']
 			: (isset($_SERVER['HTTP_X_FORWARDED_FOR'])

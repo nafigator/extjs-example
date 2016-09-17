@@ -6,19 +6,22 @@ Ext.define('Artics.view.main.List', {
     xtype: 'mainlist',
 
     requires: [
-        'Artics.store.Personnel'
+        'Artics.store.Banners'
     ],
 
-    title: 'Personnel',
+    title: 'Banners',
 
     store: {
-        type: 'personnel'
+        type: 'banners'
     },
 
     columns: [
-        { text: 'Name',  dataIndex: 'name' },
-        { text: 'Email', dataIndex: 'email', flex: 1 },
-        { text: 'Phone', dataIndex: 'phone', flex: 1 }
+        { text: 'Campaign', dataIndex: 'campaign_id' },
+        { text: 'Ad', dataIndex: 'ad_id' },
+        { text: 'Title', dataIndex: 'title', flex: 1 },
+        { text: 'Shows', dataIndex: 'shows', flex: 1 },
+        { text: 'Clicks', dataIndex: 'clicks', flex: 1 },
+        { text: 'Costs', dataIndex: 'costs'}
     ],
 
     listeners: {

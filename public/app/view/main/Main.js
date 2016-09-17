@@ -33,7 +33,7 @@ Ext.define('Artics.view.main.Main', {
         },
         title: {
             bind: {
-                text: '{name}'
+                text: '{name} Stats'
             },
             flex: 0
         },

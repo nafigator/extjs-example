@@ -1,34 +1,28 @@
 <?php
 /**
- * Контроллер главной страницы
- *
- * @file      Home.php
+ * @file      NotImplementedException.php
  *
  * PHP version 5.4+
  *
  * @author    Yancharuk Alexander <alex at itvault dot info>
  * @copyright © 2012-2016 Alexander Yancharuk <alex at itvault at info>
- * @date      2016-09-15 17:08
+ * @date      2016-09-17 11:12
  * @license   The BSD 3-Clause License
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
-namespace Controllers;
+namespace Exceptions;
 
 /**
- * Class   Home
+ * Class   NotImplementedException
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class Home extends BaseController
+class NotImplementedException extends HttpResponseException
 {
-	/**
-	 * Экшен главной страницы
-	 *
-	 * @return array
-	 */
-	public function get()
+	public function __construct()
 	{
-		return [];
+		parent::__construct();
+		header('HTTP/1.1 501 Not Implemented', true, 501);
 	}
 }

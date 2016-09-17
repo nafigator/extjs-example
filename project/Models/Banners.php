@@ -29,6 +29,8 @@ class Banners
 	/** @var  string Символ-разделитель полей в csv-файле */
 	protected $delimiter = ';';
 	protected $name      = 'banners.csv';
+	protected $start     = 0;
+	protected $limit     = 25;
 
 	/**
 	 * Инициализация пути и имени файла
@@ -46,18 +48,30 @@ class Banners
 	 */
 	public function read()
 	{
-		$data = [];
+		$result = $data = [];
+		$start  = $this->start;
+		$limit  = $this->limit + 1;
 
 		if (false === ($handle = fopen($this->path, 'r'))) {
 			throw new RuntimeException('Не удалось открыть ' . $this->path);
 		}
 
-		while (false !== ($row = fgetcsv($handle, 1000, $this->delimiter))) {
-			$data[] = $row;
+		while (false !== ($row = fgets($handle))) {
+			// Пропускаем первую строку CSV-файла, т.к. там названия колонок
+			if ($start === 0) {
+				++$start;
+				continue;
+			}
+
+			if (++$start > $limit) {
+				break;
+			}
+
+			$result[] = explode($this->delimiter, $row);
 		}
 
 		fclose($handle);
 
-		return $data;
+		return $result;
 	}
 }

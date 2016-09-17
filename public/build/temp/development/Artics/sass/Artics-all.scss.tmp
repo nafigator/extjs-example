@@ -2,7 +2,7 @@ $app-name:  dynamic( 'Artics' );
 $image-search-path: '/home/alex/dev/artics-test/public/build/development/Artics/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-artics-application: dynamic(true);;
-$include-artics-store-personnel: dynamic(true);;
+$include-artics-store-banners: dynamic(true);;
 $include-artics-view-main-list: dynamic(true);;
 $include-artics-view-main-main: dynamic(true);;
 $include-artics-view-main-maincontroller: dynamic(true);;
