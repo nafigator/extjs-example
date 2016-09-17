@@ -15,7 +15,7 @@
 
 namespace Models;
 
-use RuntimeException;
+use Exceptions\RuntimeException;
 
 /**
  * Class   Banners
@@ -30,7 +30,7 @@ class Banners
 	protected $delimiter = ';';
 	protected $name      = 'banners.csv';
 	protected $start     = 0;
-	protected $limit     = 50;
+	protected $offset    = 25;
 
 	/**
 	 * Инициализация пути и имени файла
@@ -45,25 +45,27 @@ class Banners
 	 * Чтение csv-файла
 	 *
 	 * @return array
+	 * @throws RuntimeException
 	 */
 	public function read()
 	{
-		$result = $data = [];
-		$start  = $this->start;
-		$limit  = $this->limit + 1;
+		$result  = $data = [];
+		$start   = $this->start;
+		$end     = $start + $this->offset;
+		$current = 0;
 
 		if (false === ($handle = fopen($this->path, 'r'))) {
 			throw new RuntimeException('Не удалось открыть ' . $this->path);
 		}
 
 		while (false !== ($row = fgets($handle))) {
-			// Пропускаем первую строку CSV-файла, т.к. там названия колонок
-			if ($start === 0) {
-				++$start;
+			// Пропускаем первую строку CSV-файла, и строки идущие ранее $start
+			if ($current === 0 || $current < $start) {
+				++$current;
 				continue;
 			}
 
-			if (++$start > $limit) {
+			if (++$current > $end) {
 				break;
 			}
 
@@ -73,5 +75,33 @@ class Banners
 		fclose($handle);
 
 		return $result;
+	}
+
+	/**
+	 * @param int $start
+	 *
+	 * @return Banners
+	 */
+	public function setStart($start)
+	{
+		if (null !== $start) {
+			$this->start = $start;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * @param int $offset
+	 *
+	 * @return Banners
+	 */
+	public function setOffset($offset)
+	{
+		if (null !== $offset) {
+			$this->offset = $offset;
+		}
+
+		return $this;
 	}
 }

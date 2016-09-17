@@ -15,6 +15,7 @@
 
 namespace Controllers;
 
+use Exceptions\RuntimeException;
 use Models\Banners;
 
 /**
@@ -24,6 +25,23 @@ use Models\Banners;
  */
 class Load extends BaseController
 {
+	protected $get_definitions = [
+		'start' => [
+			'filter' => FILTER_VALIDATE_INT,
+			'options' => [
+				'min_range' => 0,
+				'max_range' => PHP_INT_MAX
+			]
+		],
+		'limit' => [
+			'filter' => FILTER_VALIDATE_INT,
+			'options' => [
+				'min_range' => 1,
+				'max_range' => PHP_INT_MAX
+			]
+		],
+	];
+
 	/**
 	 * Экшен главной страницы
 	 *
@@ -31,7 +49,13 @@ class Load extends BaseController
 	 */
 	public function get()
 	{
-		$banners = (new Banners)->read();
+		$start = $limit = null;
+		extract($this->getParams(), EXTR_IF_EXISTS);
+
+		$banners = (new Banners)
+			->setStart($start)
+			->setOffset($limit)
+			->read();
 
 		$result = [
 			'success' => true,
@@ -40,5 +64,22 @@ class Load extends BaseController
 		];
 
 		return $result;
+	}
+
+	/**
+	 * Валидируем пользовательский ввод из GET-массива
+	 *
+	 * @return array
+	 * @throws RuntimeException
+	 */
+	protected function getParams()
+	{
+		$get = filter_input_array(INPUT_GET, $this->get_definitions);
+
+		if (false === $get['start'] || false === $get['limit']) {
+			throw new RuntimeException('Передан невалидный параметр');
+		}
+
+		return $get;
 	}
 }

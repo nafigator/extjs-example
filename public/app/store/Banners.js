@@ -13,7 +13,7 @@ Ext.define('Artics.store.Banners', {
     model: 'Artics.model.Banner',
 
     proxy: {
-        type: 'rest',
+        type: 'ajax',
         url: '/banners',
         reader: {
             type: 'json',
