@@ -8,6 +8,7 @@ Ext.define('Artics.store.Banners', {
     ],
 
     autoLoad: true,
+    loadMask: true,
 
     model: 'Artics.model.Banner',
 

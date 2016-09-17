@@ -1,6 +1,3 @@
-/**
- * This view is an example list of people.
- */
 Ext.define('Artics.view.main.List', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlist',
@@ -28,11 +25,18 @@ Ext.define('Artics.view.main.List', {
         select: 'onItemSelected'
     },
 
-    fbar: {
+    tbar: {
         xtype: 'pagingtoolbar',
         displayInfo: true,
-        applyCenter: true
+        emptyMsg: 'No data to display',
+        items: ['->'],
+        prependButtons: true
     },
-
-    scrollable: true
+    bbar: {
+        xtype: 'pagingtoolbar',
+        displayInfo: true,
+        emptyMsg: 'No data to display',
+        items: ['->'],
+        prependButtons: true
+    }
 });
