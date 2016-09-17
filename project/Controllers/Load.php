@@ -17,6 +17,8 @@ namespace Controllers;
 
 use Exceptions\RuntimeException;
 use Models\Banners;
+use Models\Campaigns;
+use Tools\DataBuilder;
 
 /**
  * Class   Load
@@ -52,17 +54,16 @@ class Load extends BaseController
 		$start = $limit = null;
 		extract($this->getParams(), EXTR_IF_EXISTS);
 
-		$model = new Banners;
-
-		$banners = $model
+		$banners = (new Banners)
 			->setStart($start)
-			->setOffset($limit)
-			->read();
+			->setOffset($limit);
+
+		$data = (new DataBuilder($banners, new Campaigns))->build();
 
 		$result = [
 			'success' => true,
-			'total'   => $model->getTotalLines(),
-			'items'   => $banners
+			'total'   => $banners->getTotalLines(),
+			'items'   => $data
 		];
 
 		return $result;

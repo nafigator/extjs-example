@@ -15,6 +15,8 @@
 
 namespace Models;
 
+use Exceptions\RuntimeException;
+
 /**
  * Class   Campaigns
  *
@@ -23,4 +25,47 @@ namespace Models;
 class Campaigns extends Banners
 {
 	protected $name = 'campaigns.csv';
+	/** @var array Функции применяемые к значениям, взятым из csv */
+	protected $types = [
+		0 => 'int',
+		1 => 'string',
+		2 => 'string',
+		3 => 'int',
+		4 => 'int',
+		5 => 'int',
+		6 => 'string'
+	];
+
+	/**
+	 * Читаем полностью файл с кампаниями
+	 *
+	 * @return array
+	 * @throws RuntimeException
+	 */
+	public function read()
+	{
+		$result = [];
+
+		if (false === ($handle = fopen($this->path, 'r'))) {
+			throw new RuntimeException('Не удалось открыть ' . $this->path);
+		}
+
+		$current = 0;
+
+		while (false !== ($values = fgetcsv($handle, 4096, $this->delimiter))) {
+			// Пропускаем первую строку CSV-файла
+			if ($current === 0) {
+				++$current;
+				continue;
+			}
+
+			$result[] = array_map(
+				[$this, 'fixTypes'], array_keys($values), $values
+			);
+		}
+
+		fclose($handle);
+
+		return $result;
+	}
 }

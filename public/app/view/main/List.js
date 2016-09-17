@@ -13,12 +13,18 @@ Ext.define('Artics.view.main.List', {
     },
 
     columns: [
-        { text: 'Campaign', dataIndex: 'campaign_id' },
-        { text: 'Ad', dataIndex: 'ad_id' },
-        { text: 'Title', dataIndex: 'title', flex: 1 },
-        { text: 'Shows', dataIndex: 'shows', flex: 1 },
-        { text: 'Clicks', dataIndex: 'clicks', flex: 1 },
-        { text: 'Costs', dataIndex: 'costs'}
+        { text: 'Campaign ID', dataIndex: 'campaign_id' },
+        { text: 'Ad ID', dataIndex: 'ad_id' },
+        { text: 'Banner title', dataIndex: 'title', flex: 1 },
+        { text: 'Shows', dataIndex: 'shows' },
+        { text: 'Clicks', dataIndex: 'clicks' },
+        { text: 'Costs', dataIndex: 'costs'},
+        { text: 'Campaign name', dataIndex: 'campaign_name', flex: 1 },
+        { text: 'Sex', dataIndex: 'sex' },
+        { text: 'Age from', dataIndex: 'age_from' },
+        { text: 'Age to', dataIndex: 'age_to' },
+        { text: 'Budget', dataIndex: 'budget_limit' },
+        { text: 'Payment', dataIndex: 'payment_type' }
     ],
 
     listeners: {
