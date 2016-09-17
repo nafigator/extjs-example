@@ -6,6 +6,6 @@ Ext.define('Artics.model.Banner', {
         { name: 'title', type: 'string', defaultValue: '' },
         { name: 'shows', type: 'int', defaultValue: 0 },
         { name: 'clicks', type: 'int', defaultValue: 0 },
-        { name: 'costs', type: 'int', defaultValue: 0 }
+        { name: 'costs', type: 'number', defaultValue: 0.0 }
     ]
 });

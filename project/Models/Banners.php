@@ -31,6 +31,15 @@ class Banners
 	protected $name      = 'banners.csv';
 	protected $start     = 0;
 	protected $offset    = 25;
+	/** @var array Функции применяемые к значениям, взятым из csv */
+	protected $types = [
+		0 => 'int',
+		1 => 'int',
+		2 => 'string',
+		3 => 'int',
+		4 => 'int',
+		5 => 'float'
+	];
 
 	/**
 	 * Инициализация пути и имени файла
@@ -50,7 +59,7 @@ class Banners
 	public function read()
 	{
 		$result  = $data = [];
-		$start   = $this->start;
+		$start   = $this->start + 1;
 		$end     = $start + $this->offset;
 		$current = 0;
 
@@ -69,7 +78,11 @@ class Banners
 				break;
 			}
 
-			$result[] = explode($this->delimiter, $row);
+			$values = str_getcsv($row, $this->delimiter);
+
+			$result[] = array_map(
+				[$this, 'fixTypes'], array_keys($values), $values
+			);
 		}
 
 		fclose($handle);
@@ -103,5 +116,24 @@ class Banners
 		}
 
 		return $this;
+	}
+
+	/**
+	 * Приводим к корректным типам значения
+	 *
+	 * @param int $key
+	 * @param string $value
+	 *
+	 * @return mixed
+	 */
+	public function fixTypes($key, $value)
+	{
+		if ('float' === $this->types[$key]) {
+			$value = str_replace(',', '.', $value);
+		}
+
+		settype($value, $this->types[$key]);
+
+		return $value;
 	}
 }
