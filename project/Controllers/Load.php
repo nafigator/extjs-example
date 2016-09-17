@@ -52,14 +52,16 @@ class Load extends BaseController
 		$start = $limit = null;
 		extract($this->getParams(), EXTR_IF_EXISTS);
 
-		$banners = (new Banners)
+		$model = new Banners;
+
+		$banners = $model
 			->setStart($start)
 			->setOffset($limit)
 			->read();
 
 		$result = [
 			'success' => true,
-    		'total'   => 2000,
+			'total'   => $model->getTotalLines(),
 			'items'   => $banners
 		];
 

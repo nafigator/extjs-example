@@ -121,13 +121,18 @@ class Banners
 	/**
 	 * Приводим к корректным типам значения
 	 *
-	 * @param int $key
-	 * @param string $value
+	 * @param int    $key	Ключ массива полученного из csv-строки
+	 * @param string $value Значение csv-массива
 	 *
 	 * @return mixed
+	 * @throws RuntimeException
 	 */
 	public function fixTypes($key, $value)
 	{
+		if (!isset($this->types[$key])) {
+			throw new RuntimeException('Received out of schema csv-value');
+		}
+
 		if ('float' === $this->types[$key]) {
 			$value = str_replace(',', '.', $value);
 		}
@@ -135,5 +140,17 @@ class Banners
 		settype($value, $this->types[$key]);
 
 		return $value;
+	}
+
+	/**
+	 * Получение кол-ва строк данных в csv-файле
+	 *
+	 * @return int
+	 */
+	public function getTotalLines()
+	{
+		$result = shell_exec("wc -l $this->path");
+
+		return ((int) trim(str_replace($this->path, '', $result))) - 1;
 	}
 }
