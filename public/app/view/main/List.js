@@ -26,5 +26,13 @@ Ext.define('Artics.view.main.List', {
 
     listeners: {
         select: 'onItemSelected'
-    }
+    },
+
+    fbar: {
+        xtype: 'pagingtoolbar',
+        displayInfo: true,
+        applyCenter: true
+    },
+
+    scrollable: true
 });

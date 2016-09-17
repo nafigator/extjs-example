@@ -33,6 +33,12 @@ class Load extends BaseController
 	{
 		$banners = (new Banners)->read();
 
-		return $banners;
+		$result = [
+			'success' => true,
+    		'total'   => 2000,
+			'items'   => $banners
+		];
+
+		return $result;
 	}
 }

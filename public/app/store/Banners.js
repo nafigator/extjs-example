@@ -3,16 +3,21 @@ Ext.define('Artics.store.Banners', {
 
     alias: 'store.banners',
 
+    required: [
+        'Ext.Store.data.proxy.Rest'
+    ],
+
+    autoLoad: true,
+
     model: 'Artics.model.Banner',
 
     proxy: {
-        type: 'ajax',
-        url: '/load',
+        type: 'rest',
+        url: '/banners',
         reader: {
             type: 'json',
-            rootProperty: 'items'
+            rootProperty: 'items',
+            totalProperty: 'total'
         }
-    },
-
-    autoLoad: true
+    }
 });
