@@ -57,11 +57,7 @@ class DataBuilder
 		$this->campaigns_ids  = array_column($this->campaigns_data, 0);
 
 		$data = array_map([$this, 'merge'], $banners_data);
-		unset(
-			$banners_data,
-			$this->campaigns_data,
-			$this->campaigns_ids
-		);
+		unset($banners_data, $this->campaigns_data, $this->campaigns_ids);
 
 		return $data;
 	}
