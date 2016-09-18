@@ -13,27 +13,37 @@ Ext.define('Artics.view.main.List', {
     },
 
     columns: [
-        { text: 'Campaign ID', dataIndex: 'campaign_id' },
-        { text: 'Ad ID', dataIndex: 'ad_id' },
+        { text: 'Campaign ID', dataIndex: 'campaign_id', summaryType: 'count' },
+        { text: 'Ad ID', dataIndex: 'ad_id', summaryType: 'count' },
         { text: 'Banner title', dataIndex: 'title', flex: 1 },
-        { text: 'Shows', dataIndex: 'shows' },
-        { text: 'Clicks', dataIndex: 'clicks' },
+        { text: 'Shows', dataIndex: 'shows', summaryType: 'sum' },
+        { text: 'Clicks', dataIndex: 'clicks', summaryType: 'sum' },
         {
             text: 'Costs',
             dataIndex: 'costs',
-            renderer: Ext.util.Format.numberRenderer('0.00')
+            renderer: Ext.util.Format.numberRenderer('0.00'),
+            summaryRenderer: Ext.util.Format.numberRenderer('0.00'),
+            summaryType: 'sum'
         },
         { text: 'Campaign name', dataIndex: 'campaign_name', flex: 1 },
         { text: 'Sex', dataIndex: 'sex' },
-        { text: 'Age from', dataIndex: 'age_from' },
-        { text: 'Age to', dataIndex: 'age_to' },
-        { text: 'Budget', dataIndex: 'budget_limit' },
+        { text: 'Age from', dataIndex: 'age_from', summaryType: 'min' },
+        { text: 'Age to', dataIndex: 'age_to', summaryType: 'max' },
+        { text: 'Budget', dataIndex: 'budget_limit', summaryType: 'sum' },
         { text: 'Payment', dataIndex: 'payment_type' }
     ],
 
-    listeners: {
-        select: 'onItemSelected'
-    },
+    features: [{
+        id: 'group',
+        ftype: 'groupingsummary',
+        groupHeaderTpl: '{name}',
+        hideGroupedHeader: true,
+        enableGroupingMenu: true
+    }],
+
+    //listeners: {
+    //    groupchange: 'reloadGrid'
+    //},
 
     bbar: {
         xtype: 'pagingtoolbar',
