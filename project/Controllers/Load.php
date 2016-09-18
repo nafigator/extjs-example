@@ -74,6 +74,7 @@ class Load extends BaseController
 	 *
 	 * @return array
 	 * @throws RuntimeException
+	 * @codeCoverageIgnore
 	 */
 	protected function getParams()
 	{
