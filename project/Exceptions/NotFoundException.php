@@ -28,6 +28,9 @@ class NotFoundException extends HttpResponseException
 	protected $user_agent;
 	protected $remote_ip;
 
+	/**
+	 * @codeCoverageIgnore
+	 */
 	public function __construct()
 	{
 		parent::__construct();
