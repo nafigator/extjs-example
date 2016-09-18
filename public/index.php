@@ -26,7 +26,7 @@ $path = realpath(__DIR__ . '/..');
 setlocale(LC_ALL, 'ru_RU.utf8');
 date_default_timezone_set('Europe/Moscow');
 
-include "$path/lib/Veles/AutoLoader.php";
+require "$path/lib/Veles/AutoLoader.php";
 set_include_path(
 	implode(PATH_SEPARATOR, ["$path/lib:$path/project", get_include_path()])
 );
