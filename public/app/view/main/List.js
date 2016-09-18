@@ -50,7 +50,28 @@ Ext.define('Artics.view.main.List', {
         { text: 'Age from', dataIndex: 'age_from', summaryType: 'min' },
         { text: 'Age to', dataIndex: 'age_to', summaryType: 'max' },
         { text: 'Budget', dataIndex: 'budget_limit', summaryType: 'sum' },
-        { text: 'Payment', dataIndex: 'payment_type' }
+        {
+            text: 'Payment',
+            dataIndex: 'payment_type',
+            summaryRenderer: Ext.util.Format.numberRenderer('0.00'),
+            summaryType: function (records, values) {
+                var i = 0,
+                    length = records.length,
+                    total_clicks = 0,
+                    total_costs = 0,
+                    record;
+
+                for (; i < length; ++i) {
+                    record = records[i];
+                    total_costs += record.get('costs');
+                    total_clicks += record.get('clicks');
+                }
+
+                return (total_clicks != 0)
+                    ? total_costs / total_clicks
+                    : 0;
+            }
+        }
     ],
 
     features: [{
