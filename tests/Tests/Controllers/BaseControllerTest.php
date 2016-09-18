@@ -29,6 +29,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected function tearDown()
 	{
+		unset($_SERVER['REQUEST_METHOD']);
 	}
 
 	/**
@@ -62,6 +63,28 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase
 			['PUT', uniqid()],
 			['POST', uniqid()],
 			['DELETE', uniqid()]
+		];
+	}
+
+	/**
+	 * @covers       Controllers\BaseController::index
+	 *
+	 * @dataProvider indexExceptionProvider
+	 * @expectedException \Exceptions\NotImplementedException
+	 *
+	 * @param $method
+	 */
+	public function testIndexException($method)
+	{
+		$_SERVER['REQUEST_METHOD'] = $method;
+		$this->object->index();
+	}
+
+	public function indexExceptionProvider()
+	{
+		return [
+			['HEAD'],
+			['ACCESS']
 		];
 	}
 
