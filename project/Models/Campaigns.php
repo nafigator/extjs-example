@@ -31,6 +31,8 @@ class Campaigns extends Banners
 	/**
 	 * Читаем полностью файл с кампаниями
 	 *
+	 * @codeCoverageIgnore
+	 *
 	 * @return array
 	 * @throws RuntimeException
 	 */

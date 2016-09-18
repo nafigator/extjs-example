@@ -56,9 +56,11 @@ class Banners
 		$end     = $start + $this->offset;
 		$current = 0;
 
+		//@codeCoverageIgnoreStart
 		if (false === ($handle = fopen($this->path, 'r'))) {
 			throw new RuntimeException('Не удалось открыть ' . $this->path);
 		}
+		//@codeCoverageIgnoreEnd
 
 		while (false !== ($row = fgets($handle))) {
 			// Пропускаем первую строку CSV-файла, и строки идущие ранее $start
