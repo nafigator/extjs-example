@@ -13,9 +13,19 @@ Ext.define('Artics.view.main.List', {
     },
 
     columns: [
-        { text: 'Campaign ID', dataIndex: 'campaign_id', summaryType: 'count' },
-        { text: 'Ad ID', dataIndex: 'ad_id', summaryType: 'count' },
-        { text: 'Banner title', dataIndex: 'title', flex: 1 },
+        { text: 'Campaign ID', dataIndex: 'campaign_id' },
+        { text: 'Ad ID', dataIndex: 'ad_id' },
+        {
+            text: 'Banner title',
+            dataIndex: 'title',
+            summaryType: 'count',
+            summaryRenderer: function(value, summaryData, dataIndex) {
+                return ((value === 0 || value > 1)
+                    ? '(' + value + ' Banners)'
+                    : '(1 Banner)');
+            },
+            flex: 1
+        },
         { text: 'Shows', dataIndex: 'shows', summaryType: 'sum' },
         { text: 'Clicks', dataIndex: 'clicks', summaryType: 'sum' },
         {
@@ -25,7 +35,17 @@ Ext.define('Artics.view.main.List', {
             summaryRenderer: Ext.util.Format.numberRenderer('0.00'),
             summaryType: 'sum'
         },
-        { text: 'Campaign name', dataIndex: 'campaign_name', flex: 1 },
+        {
+            text: 'Campaign name',
+            dataIndex: 'campaign_name',
+            summaryType: 'count',
+            summaryRenderer: function(value, summaryData, dataIndex) {
+                return ((value === 0 || value > 1)
+                    ? '(' + value + ' Campaigns)'
+                    : '(1 Campaign)');
+            },
+            flex: 1
+        },
         { text: 'Sex', dataIndex: 'sex' },
         { text: 'Age from', dataIndex: 'age_from', summaryType: 'min' },
         { text: 'Age to', dataIndex: 'age_to', summaryType: 'max' },
@@ -37,12 +57,13 @@ Ext.define('Artics.view.main.List', {
         id: 'group',
         ftype: 'groupingsummary',
         groupHeaderTpl: '{name}',
+        startCollapsed: true,
         hideGroupedHeader: true,
         enableGroupingMenu: true
     }],
 
     //listeners: {
-    //    groupchange: 'reloadGrid'
+    //    groupchange: 'groupGrid'
     //},
 
     bbar: {

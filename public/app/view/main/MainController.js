@@ -5,11 +5,13 @@
 Ext.define('Artics.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.main',
+    alias: 'controller.main'
 
-    //reloadGrid: function (ct , column , direction , eOpts) {
+    //groupGrid: function (store , grouper , eOpts) {
     //    console.log('sort start');
-    //    console.log(ct , column , direction , eOpts);
+    //    console.log(store); console.log(grouper), console.log(eOpts);
+    //    console.log(grouper.getState());
+    //
     //    //container.events.sortchange.stopEvent();
     //    console.log('sort stop');
     //}
