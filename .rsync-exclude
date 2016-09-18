@@ -1,0 +1,8 @@
+.git
+.gitignore
+.gitmodules
+*.komodoproject
+.komodotools
+.rsync-exclude
+.idea
+public/index-dev.php
