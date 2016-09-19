@@ -5,7 +5,7 @@ Ext.define('Artics.store.Banners', {
 
     autoLoad: true,
     loadMask: true,
-    pageSize: 185,
+    pageSize: 10000,
 
     model: 'Artics.model.Banner',
 
