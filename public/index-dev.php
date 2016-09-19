@@ -13,7 +13,7 @@
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
-use Veles\Application\Application;
+use Application\ArticsApplication;
 use Veles\AutoLoader;
 use Veles\Routing\IniConfigLoader;
 use Veles\Routing\Route;
@@ -55,6 +55,6 @@ $route
 	->setConfigHandler($config)
 	->init();
 
-$app = new Application;
+$app = new ArticsApplication;
 $app->setRoute($route)
 	->run();
