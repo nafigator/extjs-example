@@ -16,7 +16,6 @@
 namespace Application;
 
 use Veles\Application\Application;
-use Veles\Application\RouteTrait;
 use Veles\View\View;
 
 /**
@@ -26,8 +25,6 @@ use Veles\View\View;
  */
 class ArticsApplication extends Application
 {
-	use RouteTrait;
-
 	/**
 	 * Application start
 	 */
