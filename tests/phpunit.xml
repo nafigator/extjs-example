@@ -26,6 +26,7 @@
 			<directory suffix=".phtml">Tests</directory>
 		</blacklist>
 		<whitelist>
+			<directory suffix=".php">../project/Application</directory>
 			<directory suffix=".php">../project/Controllers</directory>
 			<directory suffix=".php">../project/Exceptions</directory>
 			<directory suffix=".php">../project/Models</directory>

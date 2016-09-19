@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/alex/dev/artics-test/project/Models</title>
+  <title>Dashboard for /home/alex/dev/artics-test/project/Application</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/nv.d3.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
      <div class="col-md-12">
       <ol class="breadcrumb">
         <li><a href="../index.html">/home/alex/dev/artics-test/project</a></li>
-        <li><a href="index.html">Models</a></li>
+        <li><a href="index.html">Application</a></li>
         <li class="active">(Dashboard)</li>
 
       </ol>
@@ -158,7 +158,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,2], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -176,7 +176,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,7], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,1], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -226,7 +226,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,15,"<a href=\"Banners.php.html#25\">Banners<\/a>"],[100,4,"<a href=\"Campaigns.php.html#25\">Campaigns<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"ArticsApplication.php.html#26\">ArticsApplication<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -250,7 +250,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,1,"<a href=\"Banners.php.html#40\">Banners::__construct<\/a>"],[100,6,"<a href=\"Banners.php.html#52\">Banners::read<\/a>"],[100,2,"<a href=\"Banners.php.html#95\">Banners::setStart<\/a>"],[100,2,"<a href=\"Banners.php.html#111\">Banners::setOffset<\/a>"],[100,3,"<a href=\"Banners.php.html#129\">Banners::fixTypes<\/a>"],[100,1,"<a href=\"Banners.php.html#149\">Banners::getTotalLines<\/a>"],[100,4,"<a href=\"Campaigns.php.html#39\">Campaigns::read<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"ArticsApplication.php.html#31\">ArticsApplication::run<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

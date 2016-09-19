@@ -14,6 +14,8 @@
  */
 
 use Veles\AutoLoader;
+use Veles\View\Adapters\NativeAdapter;
+use Veles\View\View;
 
 ini_set('display_errors', 1);
 ini_set('error_reporting', -1);
@@ -36,3 +38,7 @@ set_include_path(
 	implode(PATH_SEPARATOR, ["$path/lib:$path/project", get_include_path()])
 );
 AutoLoader::init();
+
+$view_adapter = new NativeAdapter;
+$view_adapter->setTemplateDir("$path/project/Templates/");
+View::setAdapter($view_adapter);
