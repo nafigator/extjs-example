@@ -24,3 +24,5 @@ Ext.application({
     // of merge conflicts when upgrading to new versions of Sencha Cmd.
     //-------------------------------------------------------------------------
 });
+
+Ext.getBody().mask('Loading application... ');

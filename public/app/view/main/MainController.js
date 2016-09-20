@@ -5,14 +5,15 @@
 Ext.define('Artics.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.main'
+    alias: 'controller.main',
 
-    //groupGrid: function (store , grouper , eOpts) {
-    //    console.log('sort start');
-    //    console.log(store); console.log(grouper), console.log(eOpts);
-    //    console.log(grouper.getState());
-    //
-    //    //container.events.sortchange.stopEvent();
-    //    console.log('sort stop');
-    //}
+    control: {
+        'grid':{
+            afterrender: 'onGridAfterRender'
+        }
+    },
+
+    onGridAfterRender: function () {
+        Ext.getBody().unmask();
+    }
 });
