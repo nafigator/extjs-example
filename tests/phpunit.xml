@@ -30,7 +30,6 @@
 			<directory suffix=".php">../project/Controllers</directory>
 			<directory suffix=".php">../project/Exceptions</directory>
 			<directory suffix=".php">../project/Models</directory>
-			<directory suffix=".php">../project/Templates</directory>
 			<directory suffix=".php">../project/Tools</directory>
 		</whitelist>
 	</filter>
