@@ -7,4 +7,5 @@
 .idea
 public/index-dev.php
 build/development
+build/temp
 tests
