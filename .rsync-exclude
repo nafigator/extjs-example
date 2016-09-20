@@ -6,3 +6,5 @@
 .rsync-exclude
 .idea
 public/index-dev.php
+build/development
+tests
